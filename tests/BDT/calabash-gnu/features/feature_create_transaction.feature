@@ -2,6 +2,7 @@ Feature: Create Transaction
 
 Scenario: As a user I want to create transaction
    Given I press "Siguiente"
+   Then take picture
    And I press "Siguiente"
    And I press "Siguiente"
    And I wait for progress

@@ -2,6 +2,7 @@ Feature: Detail Account
 
 Scenario: As a user I want to see detail account
    Given I press "Siguiente"
+   Then take picture
    And I press "Siguiente"
    And I press "Siguiente"
    And I wait for progress

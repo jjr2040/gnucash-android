@@ -4,6 +4,7 @@ Scenario: As a user I want to create account
    Given I press "Siguiente"
    #button to open account assets
    When I press list item number 5
+   Then take picture
    And I press "Siguiente"
    And I scroll down
    And I scroll down
