@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         catchError() {
+          sh 'gem install calabash-android -v 0.9.8'
           withGradle() {
             sh './gradlew assembleDev'
           }
