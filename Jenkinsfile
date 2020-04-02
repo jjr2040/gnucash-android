@@ -30,7 +30,7 @@ pipeline {
       steps {
         warnError(message: 'Error running appium') {
           dir('tests/BDT/calabash-gnu') {
-            sh '/Users/jjvillegas/.rbenv/versions/2.5.1/bin/irb SCREENSHOT_PATH=screenshots/ calabash-android run ../../../app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r18a6bb36.apk'
+            sh 'SCREENSHOT_PATH=screenshots/ /Users/jjvillegas/.rbenv/versions/2.5.1/bin/irb calabash-android run ../../../app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r18a6bb36.apk'
           }
         }
 
