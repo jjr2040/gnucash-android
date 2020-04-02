@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'ruby --version'
+        sh 'rbenv --version'
         // catchError() {
         //   sh 'gem install calabash-android -v 0.9.8'
         //   withGradle() {
