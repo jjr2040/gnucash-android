@@ -3,18 +3,19 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        catchError() {
-          sh 'gem install calabash-android -v 0.9.8'
-          withGradle() {
-            sh './gradlew assembleDev'
-          }
+        sh 'rbenv --version'
+        // catchError() {
+        //   sh 'gem install calabash-android -v 0.9.8'
+        //   withGradle() {
+        //     sh './gradlew assembleDev'
+        //   }
 
-        }
+        // }
 
       }
     }
 
-    stage('E2E Tests') {
+    stage('E2E Tests Calabash') {
       when {
         expression {
           params.ENABLE_E2E
