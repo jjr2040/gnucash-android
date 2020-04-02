@@ -8,9 +8,9 @@ pipeline {
           sh 'eval "$(rbenv init -)"'
           sh 'rbenv --version'
           // sh 'gem install calabash-android -v 0.9.8'
-          withGradle() {
-            sh './gradlew assembleDev'
-          }
+          // withGradle() {
+          //   sh './gradlew assembleDev'
+          // }
 
         }
 
