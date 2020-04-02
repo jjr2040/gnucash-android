@@ -4,9 +4,9 @@ pipeline {
     stage('Build') {
       steps {
         catchError() {
-          sh 'export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"'
-          sh 'eval "$(rbenv init -)"'
-          sh 'rbenv --version'
+          // sh 'export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"'
+          // sh 'eval "$(rbenv init -)"'
+          sh '/usr/local/bin/rbenv --version'
           // sh 'gem install calabash-android -v 0.9.8'
           // withGradle() {
           //   sh './gradlew assembleDev'
