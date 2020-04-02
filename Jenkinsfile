@@ -6,11 +6,14 @@ pipeline {
         catchError() {
           // sh 'export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"'
           // sh 'eval "$(rbenv init -)"'
-          sh '/usr/local/bin/rbenv --version'
-          // sh 'gem install calabash-android -v 0.9.8'
-          // withGradle() {
-          //   sh './gradlew assembleDev'
+          // dir('tests/BDT/calabash-gnu') {
+          //   sh '/usr/local/bin/rbenv --version'
           // }
+          
+          // sh 'gem install calabash-android -v 0.9.8'
+          withGradle() {
+            sh './gradlew assembleDev'
+          }
 
         }
 
@@ -27,7 +30,7 @@ pipeline {
       steps {
         warnError(message: 'Error running appium') {
           dir('tests/BDT/calabash-gnu') {
-            sh 'SCREENSHOT_PATH=screenshots/ calabash-android run ../../../app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r18a6bb36.apk'
+            sh '/Users/jjvillegas/.rbenv/versions/2.5.1/bin/irb SCREENSHOT_PATH=screenshots/ calabash-android run ../../../app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r18a6bb36.apk'
           }
         }
 
