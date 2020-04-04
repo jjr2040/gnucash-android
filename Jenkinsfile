@@ -1,44 +1,69 @@
 pipeline {
-  agent {
-    docker { image 'bitriseio/docker-android:latest'}
-  }
-
-  environment { 
-    // ROOT_DIR = "${WORKSPACE}/gnucash-android"
-    BRANCH = 'master'
-    REPO_URL = 'https://github.com/jjr2040/gnucash-android.git'
-  }
-
+  agent any
   stages {
-
-    stage('Checkout and build') {
+    stage('Build') {
       steps {
-        checkoutAndBuild()
+        catchError() {
+          // sh 'export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"'
+          // sh 'eval "$(rbenv init -)"'
+          // dir('tests/BDT/calabash-gnu') {
+          //   sh '/usr/local/bin/rbenv --version'
+          // }
+          
+          // sh 'gem install calabash-android -v 0.9.8'
+          withGradle() {
+            sh './gradlew assembleDev'
+          }
+
+        }
+
       }
     }
 
-    stage('Test') {
+    stage('E2E Tests') {
+      when {
+        expression {
+          params.ENABLE_E2E
+        }
+
+      }
       steps {
-        runMonkeyTest()
+        warnError(message: 'Error running appium') {
+          dir('tests/BDT/calabash-gnu') {
+            sh 'SCREENSHOT_PATH=screenshots/ /Users/jjvillegas/.rbenv/versions/2.5.1/bin/irb calabash-android run ../../../app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r18a6bb36.apk'
+          }
+        }
+
+      }
+      post {
+        always {
+          dir('tests/BDT/calabash-gnu') {
+            archiveArtifacts artifacts: 'screenshots/__diff_screenshots__/**/*.png', fingerprint: true
+          }
+        }
+      }
+    }
+
+    stage('Random Testing') {
+      when {
+        expression {
+          params.ENABLE_RANDOM_TESTING
+        }
+
+      }
+      steps {
+        warnError(message: 'Monkeys broke something') {
+          sh "bash ./scripts/tests/monkey-test.sh ${params.NUM_RANDOM_EVENTS}"
+        }
+
       }
     }
 
   }
-}
-
-// Steps
-
-def checkoutAndBuild() {
-
-  git "${REPO_URL}"
-
-  sh './gradlew build installDevelopmentDebug'
-
-  // withGradle {
-  //   sh './gradlew build installDevelopmentDebug'
-  // }
-}
-
-def runMonkeyTest() {
-  sh 'echo "Tests running"'
+  parameters {
+    string(name: 'NUM_RANDOM_EVENTS', defaultValue: '1000', description: 'Number of events for Random testing')
+    booleanParam(name: 'ENABLE_E2E', defaultValue: true, description: 'Enable E2E testing')
+    booleanParam(name: 'ENABLE_RANDOM_TESTING', defaultValue: true, description: 'Enable random testing testing')
+    booleanParam(name: 'UPDATE_SNAPSHOTS', defaultValue: false, description: 'Should updated VRT snapshots')
+  }
 }
