@@ -10,8 +10,7 @@ Scenario: As a user I want to see detail account
    And I wait for progress
    And I press "Next"
    And I press "Done"
-   And I wait for progress
-   And I press "DISMISS"
+   And I press view with id "button1"
    And I press "Expenses"
    And I should see "SUB-ACCOUNTS"
    And I should see "Adjustment"
