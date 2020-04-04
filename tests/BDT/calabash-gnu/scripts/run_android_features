@@ -21,6 +21,8 @@ done
 rm -rf screenshot*
 rm -rf test_servers
 
+pwd
+
 # resign apk
 bundle exec calabash-android resign "${pwd}/app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r452aaf58.apk"
 bundle exec calabash-android build "${pwd}/app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r452aaf58.apk"
