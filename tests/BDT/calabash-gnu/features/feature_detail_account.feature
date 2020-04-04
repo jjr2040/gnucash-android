@@ -1,16 +1,16 @@
 Feature: Detail Account
 
 Scenario: As a user I want to see detail account
-   Given I press "Siguiente"
-   And I press "Siguiente"
-   And I press "Siguiente"
+   Given I press "Next"
+   And I press "Next"
+   And I press "Next"
    And I wait for progress
    And I press view with id "text1"
    And I wait for progress
-   And I press "Siguiente"
-   And I press "Hecho"
-   And I press "Cerrar"
-   And I press "Gastos"
-   And I should see "Sub-cuentas"
-   And I should see "Ajustes"
-   Then I should see "Automóvil"
+   And I press "Next"
+   And I press "Done"
+   And I press "Dismiss"
+   And I press "Expenses"
+   And I should see "Sub-accounts"
+   And I should see "Auto"
+   Then I should see "Books"
