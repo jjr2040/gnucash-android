@@ -20,7 +20,6 @@ Scenario: As a user I want to create transaction
    And I press view with id "calculator_keyboard"
    And I press view with id "input_transaction_type"
    And I press view with id "layout_double_entry"
-   And I press view with id "text1"
    And I enter text "Transaction Description" into field with id "input_description"
    And I scroll down
    And I press view with id "input_recurrence"
