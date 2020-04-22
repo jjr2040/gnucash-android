@@ -1,1 +1,0 @@
-$ANDROID_HOME/platform-tools/adb shell monkey -p org.gnucash.android -v $1
