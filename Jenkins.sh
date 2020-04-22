@@ -1,3 +1,4 @@
+echo "${PWD}"
 ANDROID_AVD_DEVICE=$1
 E2E_BDT=$2
 RANDOM=$3
@@ -12,6 +13,7 @@ if [ ! ${E2E_BDT} = "false" ] ; then
 	bundle install
 	chmod +x scripts/run_android_features
 	cd scripts && ./run_android_features -r -d ${ANDROID_AVD_DEVICE}
+	cd ../../..
 fi
 
 if [ ! ${RANDOM} = "false" ] ; then
