@@ -3,6 +3,8 @@ E2E_BDT=$2
 RANDOM=$3
 RANDOM_EVENTS=$4
 
+cd ..
+
 rm ./app/build/outputs/apk/development/debug/GnucashAndroid.apk
 mv ./app/build/outputs/apk/development/debug/*.apk ./app/build/outputs/apk/development/debug/GnucashAndroid.apk
 
