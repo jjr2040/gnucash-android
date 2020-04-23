@@ -1,4 +1,5 @@
 APK_PATH="./app/build/outputs/apk/development/debug"
+MONKEY_RESULTS="tests/Monkey/monkey_results.txt"
 ANDROID_AVD_DEVICE=$1
 E2E_BDT=$2
 RANDOM=$3
@@ -21,10 +22,10 @@ fi
 
 if [ ! ${RANDOM} = "false" ] ; then
 	echo "------- START MONKEY"
-	rm tests/Monkey/monkey_results.txt
-	touch tests/Monkey/monkey_results.txt
+	rm ${MONKEY_RESULTS}
+	touch ${MONKEY_RESULTS}
 	$ANDROID_HOME/platform-tools/adb install -r ${APK_PATH}/GnucashAndroid.apk
     $ANDROID_HOME/platform-tools/adb shell am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -n "org.gnucash.android.devel/org.gnucash.android.ui.account.AccountsActivity"
-	$ANDROID_HOME/platform-tools/adb shell monkey -p org.gnucash.android.devel -s ${RANDOM_SEED} -v ${RANDOM_EVENTS} >> tests/Monkey/monkey_results.txt
+	$ANDROID_HOME/platform-tools/adb shell monkey -p org.gnucash.android.devel -s ${RANDOM_SEED} -v ${RANDOM_EVENTS} >> ${MONKEY_RESULTS}
 	echo "------- END MONKEY"
 fi
