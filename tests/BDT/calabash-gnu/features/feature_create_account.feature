@@ -8,10 +8,10 @@ Scenario: As a user I want to create account
    And I press "ADP - Andorran Peseta"
    And I press "Next"
    And I press "Next"
-   And I wait for progress
+   And I wait
    And I press view with id "text1"
    And I press view with id "text1"
-   And I wait for progress
+   And I wait
    And I press "Next"
    And I press "Done"
    And I wait for progress
