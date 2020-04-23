@@ -20,13 +20,12 @@ done
 # clear old files
 rm -rf screenshot*
 rm -rf test_servers
-# rm ../../../app/build/outputs/apk/development/debug/GnucashAndroid.apk
-
-# change apk name
-# mv ../../../app/build/outputs/apk/development/debug/*.apk ../../../app/build/outputs/apk/development/debug/GnucashAndroid.apk
 
 # resign apk
+echo "resigning..."
 bundle exec calabash-android resign "../../../app/build/outputs/apk/development/debug/GnucashAndroid.apk"
+echo "building..."
 bundle exec calabash-android build "../../../app/build/outputs/apk/development/debug/GnucashAndroid.apk"
 # run tests
+echo "running..."
 bundle exec calabash-android run "../../../app/build/outputs/apk/development/debug/GnucashAndroid.apk" $PARAMS
