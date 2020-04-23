@@ -21,6 +21,8 @@ fi
 
 if [ ! ${RANDOM} = "false" ] ; then
 	echo "------- START MONKEY"
+	rm tests/Monkey/monkey_results.txt
+	touch tests/Monkey/monkey_results.txt
 	$ANDROID_HOME/platform-tools/adb install -r ${APK_PATH}/GnucashAndroid.apk
     $ANDROID_HOME/platform-tools/adb shell am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -n "org.gnucash.android.devel/org.gnucash.android.ui.account.AccountsActivity"
 	$ANDROID_HOME/platform-tools/adb shell monkey -p org.gnucash.android.devel -s ${RANDOM_SEED} -v ${RANDOM_EVENTS} >> tests/Monkey/monkey_results.txt
