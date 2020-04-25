@@ -30,3 +30,5 @@ crashlytics.properties
 fabric.properties
 app/fabric.properties
 app/*.tap
+
+node_modules/
