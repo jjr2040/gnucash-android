@@ -63,7 +63,7 @@ exports.compareAndSaveScreenshot = async (client, imageName) => {
     const diffData = await diffImage(outputScreenshotsPath, Buffer.from(screenshot, 'base64'));
     const misMatchPercentage = diffData.misMatchPercentage;
 
-    if ( misMatchPercentage > 0.1 ) {
+    if ( misMatchPercentage > parseFloat(`${process.env.VRT_TRESHOLD}`) ) {
       await fs.writeFile(diffSnapshotsDir + imageName, diffData.getBuffer());
     }
   } else {
