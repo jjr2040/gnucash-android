@@ -15,8 +15,6 @@ MONKEY=$5
 MONKEY_EVENTS=$6
 MONKEY_SEED=$7
 MUTATION=$8
-MUTANTS_NUMBER=$9
-OPERATORS=${10}
 
 echo "--------------"
 echo "Android device: ${ANDROID_AVD_DEVICE}"
@@ -27,8 +25,6 @@ echo "Monkey enabled: ${MONKEY}"
 echo "Monkey events: ${MONKEY_EVENTS}"
 echo "Monkey seed: ${MONKEY_SEED}"
 echo "Mutation enabled: ${MUTATION}"
-echo "Number of mutants: ${MUTANTS_NUMBER}"
-echo "Mutation operators: ${OPERATORS}"
 echo "--------------"
 
 mv -f ${APK_PATH}/*.apk ${ANDROID_APK}
@@ -64,6 +60,12 @@ if [ ! ${MONKEY} = "false" ] ; then
 fi
 
 if [ ! ${MUTATION} = "false" ] ; then
-	echo "------- START MUTATION (MUTAPK)"
-	echo "------- END MUTATION MUTAPK"
+	echo "------- START MUTATION (MDROID)"
+	git clone https://gitlab.com/SEMERU-Code-Public/Android/Mutation/MDroidPlus
+	cd MDroidPlus
+	mkdir mutants
+	mvn clean
+	mvn package
+	java -jar target/MDroidPlus-1.0.0.jar ./libs4ast/ . org.gnucash.android ./mutants/ . false
+	echo "------- END MUTATION MDROID"
 fi
