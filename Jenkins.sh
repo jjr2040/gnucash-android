@@ -66,6 +66,6 @@ if [ ! ${MUTATION} = "false" ] ; then
 	mkdir mutants
 	mvn clean
 	mvn package
-	java -jar target/MDroidPlus-1.0.0.jar ./libs4ast/ . org.gnucash.android ./mutants/ . false
+	java -jar target/MDroidPlus-1.0.0.jar ./libs4ast/ ../ org.gnucash.android ./mutants/ . false
 	echo "------- END MUTATION MDROID"
 fi
