@@ -76,7 +76,8 @@ if [ ! ${MUTATION} = "false" ] ; then
 		mvn package
 		java -jar target/MDroidPlus-1.0.0.jar ./libs4ast/ ../ org.gnucash.android ./mutants/ . false
 		echo "------- END MUTATION MDROID"
-	else if [  ${MUTATION_TYPE} = "MutAPK" ] ; then
+	fi
+	if [  ${MUTATION_TYPE} = "MutAPK" ] ; then
 		echo "------- START MUTATION (MUTAPK)"
 		git clone https://github.com/TheSoftwareDesignLab/MutAPK.git
 		cd MutAPK
