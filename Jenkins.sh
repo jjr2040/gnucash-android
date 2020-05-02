@@ -9,19 +9,21 @@ VRT_DIFF_PATH="appium/snapshots/__diff_snapshots__"
 CUCUMBER="tests/BDT/calabash-gnu/cucumber.json"
 ANDROID_AVD_DEVICE=$1
 E2E_BDT=$2
-VRT=$3
-export VRT_TRESHOLD=$4
-MONKEY=$5
-MONKEY_EVENTS=$6
-MONKEY_SEED=$7
-MUTATION=$8
-MUTATION_TYPE=$9
-MUTANTS_NUMBER=${10}
-OPERATORS=${11}
+APK_E2E=$3
+VRT=$4
+export VRT_TRESHOLD=$5
+MONKEY=$6
+MONKEY_EVENTS=$7
+MONKEY_SEED=$8
+MUTATION=$9
+MUTATION_TYPE=${10}
+MUTANTS_NUMBER=${11}
+OPERATORS=${12}
 
 echo "--------------"
 echo "Android device: ${ANDROID_AVD_DEVICE}"
 echo "E2E enabled: ${E2E_BDT}"
+echo "APK for E2E: ${APK_E2E}"
 echo "VRT enabled: ${VRT}"
 echo "VRT treshold: ${VRT_TRESHOLD}"
 echo "Monkey enabled: ${MONKEY}"
@@ -41,6 +43,11 @@ rm ${CUCUMBER}
 
 if [ ! ${E2E_BDT} = "false" ] ; then
 	echo "------- START BDT (CALABASH/CUCUMBER)"
+	
+	if [ ! ${APK_E2E} = ${APK_NAME} ] ; then
+	    export ANDROID_APK=${PWD}/MutAPK/mutants/${APK_E2E}/${APK_NAME}
+	fi
+	
 	gem install bundler
 	cd tests/BDT/calabash-gnu
 	bundle install
