@@ -5,13 +5,14 @@ const opts = {
     platformName: "Android",
     platformVersion: "8",
     deviceName: "Android Emulator",
-    app: "/Users/jjvillegas/Documents/miso/pruebas/project/gnucash-android/app/build/outputs/apk/development/debug/GnucashAndroid_v2.4.0-dev3_r4bf0eeb6.apk",
+    app: `${process.env.ANDROID_APK}`,
     // appPackage: "io.appium.android.apis",
     appPackage: 'org.gnucash.android.devel',
     appActivity: "org.gnucash.android.ui.account.AccountsActivity",
     appWaitActivity: "org.gnucash.android.*",
     automationName: "UiAutomator2",
-    avd: 'Pixel_2_API_27'
+    avd: `${process.env.ANDROID_AVD_NAME}`,
+    adbPort: `${process.env.ANDROID_ADB_SERVER_PORT}`
   }
 };
 
