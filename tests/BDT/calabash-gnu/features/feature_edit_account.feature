@@ -11,9 +11,13 @@ Scenario: As a user I want to edit account
    And I press "Done"
    And I wait
    And I press "Dismiss"
+   And take picture
    And I press "Assets"
+   And take picture
    And I press view with id "options_menu"
+   And take picture
    And I press "Edit Account"
+   And take picture
    And I clear input field with id "input_account_name"
    And I enter text "Food" into field with id "input_account_name"
    And I press view with id "input_color_picker"
@@ -22,5 +26,7 @@ Scenario: As a user I want to edit account
    And I clear input field with id "input_account_description"
    And I enter text "Food description" into field with id "input_account_description"
    And I press view with id "checkbox_placeholder_account"
+   And take picture
    And I press "Save"
+   And take picture
    Then I should see "Food"

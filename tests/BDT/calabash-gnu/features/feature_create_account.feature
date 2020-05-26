@@ -17,12 +17,17 @@ Scenario: As a user I want to create account
    And I press "Done"
    And I wait for progress
    And I press "Dismiss"
+   And take picture
    And I press view with id "fab_create_account"
+   And take picture
    And I enter text "New account" into field with id "input_account_name"
    And I press view with id "input_color_picker"
    And I press "Color 25"
+   And take picture
    And I scroll down
    And I enter text "Account description" into field with id "input_account_description"
    And I press view with id "checkbox_placeholder_account"
+   And take picture
    And I press "Save"
+   And take picture
    Then I should see "New account"

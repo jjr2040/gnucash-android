@@ -17,31 +17,45 @@ Scenario: As a user I want to navigate in menu
    And I press "Done"
    And I wait for progress
    And I press "Dismiss"
+   And take picture
    And I press image button number 1
    And I wait
+   And take picture
    And I scroll view "NavigationMenuView" "down"
    And I wait
+   And take picture
    And I select "Settings" menu
    And I wait
+   And take picture
    And I should see "General Preferences"
    And I wait
+   And take picture
    And I press image button number 1
    And I press image button number 1
    And I wait
+   And take picture
    And I select "Reports" menu
    And I wait
+   And take picture
    And I should see "Expenses for last 3 months"
    And I wait
+   And take picture
    And I press image button number 1
    And I wait
+   And take picture
    And I select "Favorites" menu
    And I wait
+   And take picture
    And I should see "Accounts"
    And I wait
+   And take picture
    And I press image button number 1
    And I wait
+   And take picture
    And I scroll view "NavigationMenuView" "down"
    And I wait
+   And take picture
    And I select "Help & Feedback" menu
    And I wait
+   And take picture
    Then I should see "Help"

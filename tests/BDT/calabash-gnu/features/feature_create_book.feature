@@ -17,10 +17,15 @@ Scenario: As a user I want to create a book
    And I press "Done"
    And I wait for progress
    And I press "Dismiss"
+   And take picture
    And I press image button number 1
    And I wait
+   And take picture
    And I press view with id "book_name"
    And I wait
+   And take picture
    And I select manage books
+   And take picture
    And I press view with id "menu_create_book"
+   And take picture
    Then I should see "GnuCash Accounts successfully imported"

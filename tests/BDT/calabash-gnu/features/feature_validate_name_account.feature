@@ -13,4 +13,5 @@ Scenario: As a user I want don't create account without name
    And I press "Dismiss"
    And I press view with id "fab_create_account"
    And I press "Save"
+   And take picture
    Then I should see "Enter an account name to create an account"

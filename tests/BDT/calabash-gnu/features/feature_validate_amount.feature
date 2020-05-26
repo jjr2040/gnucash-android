@@ -11,9 +11,15 @@ Scenario: As a user I want don't create a transaction without amount
    And I press "Done"
    And I wait
    And I press "Dismiss"
+   And take picture
    And I press "Equity"
+   And take picture
    And I press "Opening Balances"
+   And take picture
    And I press view with id "fab_create_transaction"
+   And take picture
    And I enter text "Transaction" into field with id "input_transaction_name"
+   And take picture
    And I press "Save"
+   And take picture
    Then I should see "Enter an amount to save the transaction"

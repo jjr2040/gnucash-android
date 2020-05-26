@@ -17,6 +17,9 @@ Scenario: As a user I want to search an account by name
    And I press "Done"
    And I wait for progress
    And I press "Dismiss"
+   And take picture
    And I press view with id "menu_search"
+   And take picture
    And I enter text "Asse" into field with id "search_src_text"
+   And take picture
    Then I should not see "Equity"
